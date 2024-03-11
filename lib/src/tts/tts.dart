@@ -6,6 +6,7 @@ import 'package:flutter_azure_tts/src/auth/auth_handler.dart';
 import 'package:flutter_azure_tts/src/auth/auth_response_mapper.dart';
 import 'package:flutter_azure_tts/src/auth/authentication_types.dart';
 import 'package:flutter_azure_tts/src/common/config.dart';
+import 'package:flutter_azure_tts/src/common/constants.dart';
 import 'package:flutter_azure_tts/src/common/respository.dart';
 import 'package:flutter_azure_tts/src/utils/log.dart';
 import 'package:flutter_azure_tts/src/voices/voices_handler.dart';
@@ -26,11 +27,18 @@ class Tts {
   ///
   /// **withLogs** : (optional) enable logs. *true* by default
   ///
-  static void init(
-          {required String region,
-          required String subscriptionKey,
-          bool withLogs = true}) =>
-      _init(region, subscriptionKey, withLogs);
+  static void init({
+    required String region,
+    required String subscriptionKey,
+    bool withLogs = true,
+    Map<EndpointType, String>? customEndpoints,
+  }) =>
+      _init(
+        region,
+        subscriptionKey,
+        withLogs: withLogs,
+        customEndpoints: customEndpoints,
+      );
 
   ///Get available voices on the Azure Endpoint Region
   ///
@@ -61,10 +69,17 @@ class Tts {
     return repo.getTts(ttsParams);
   }
 
-  static void _init(String region, String subscriptionKey,
-      [bool withLogs = true]) {
+  static void _init(
+    String region,
+    String subscriptionKey, {
+    bool withLogs = true,
+    Map<EndpointType, String>? customEndpoints,
+  }) {
     EquatableConfig.stringify = true;
-    Config.init(endpointRegion: region, endpointSubKey: subscriptionKey);
+    Config.init(
+        endpointRegion: region,
+        endpointSubKey: subscriptionKey,
+        customEndpoints: customEndpoints);
     _initAuthManager();
     _initRepository();
     _initLogs(withLogs);

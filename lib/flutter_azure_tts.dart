@@ -1,6 +1,7 @@
 library flutter_azure_tts;
 
 import 'package:flutter_azure_tts/src/audio/audio_responses.dart';
+import 'package:flutter_azure_tts/src/common/constants.dart';
 import 'package:flutter_azure_tts/src/tts/tts.dart';
 import 'package:flutter_azure_tts/src/tts/tts_params.dart';
 import 'package:flutter_azure_tts/src/voices/voices.dart';
@@ -21,12 +22,18 @@ class AzureTts {
   /// **withLogs** : (optional) enable logs. *true* by default
   ///
   ///Throws an [AzureException] on failure.
-  static void init(
-      {required String subscriptionKey,
-      required String region,
-      bool withLogs = true}) async {
+  static void init({
+    required String subscriptionKey,
+    required String region,
+    bool withLogs = true,
+    Map<EndpointType, String>? customEndpoints,
+  }) async {
     Tts.init(
-        region: region, subscriptionKey: subscriptionKey, withLogs: withLogs);
+      region: region,
+      subscriptionKey: subscriptionKey,
+      withLogs: withLogs,
+      customEndpoints: customEndpoints,
+    );
   }
 
   ///Get available voices on the Azure Endpoint Region
