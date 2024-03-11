@@ -20,10 +20,10 @@ class Config {
   static void init({
     required String endpointRegion,
     required String endpointSubKey,
-    Map<EndpointType, String>? customEndpoints,
+    Map<EndpointType, String>? customEndpointsMap,
   }) {
     region = endpointRegion;
     subscriptionKey = endpointSubKey;
-    customEndpoints = customEndpoints ?? {};
+    customEndpoints = customEndpointsMap ?? {};
   }
 }

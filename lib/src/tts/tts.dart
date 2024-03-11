@@ -77,9 +77,10 @@ class Tts {
   }) {
     EquatableConfig.stringify = true;
     Config.init(
-        endpointRegion: region,
-        endpointSubKey: subscriptionKey,
-        customEndpoints: customEndpoints);
+      endpointRegion: region,
+      endpointSubKey: subscriptionKey,
+      customEndpointsMap: customEndpoints,
+    );
     _initAuthManager();
     _initRepository();
     _initLogs(withLogs);
