@@ -21,6 +21,8 @@ class AzureTts {
   ///
   /// **withLogs** : (optional) enable logs. *true* by default
   ///
+  /// **customEndpoints : (optional) to configure the endpoints
+  ///
   ///Throws an [AzureException] on failure.
   static void init({
     required String subscriptionKey,
