@@ -14,10 +14,18 @@ import 'package:http/http.dart' as http;
 
 ///Helper class for Azure Cognitive TTS requests
 class Tts {
-  static late final AuthHandler _authHandler;
-  static final AudioHandler _audioHandler = AudioHandler();
-  static final VoicesHandler _voicesHandler = VoicesHandler();
-  static late final Repository repo;
+  static final Tts _instance = Tts._internal();
+
+  factory Tts() {
+    return _instance;
+  }
+
+  Tts._internal();
+
+  late AuthHandler _authHandler;
+  late AudioHandler _audioHandler = AudioHandler();
+  late VoicesHandler _voicesHandler = VoicesHandler();
+  late Repository repo;
 
   /// MUST be called first before any other call is made.
   ///
@@ -50,7 +58,7 @@ class Tts {
   /// [VoicesFailedBadRequest], [VoicesFailedBadRequest], [VoicesFailedUnauthorized],
   /// [VoicesFailedTooManyRequests], [VoicesFailedBadGateWay], [VoicesFailedUnkownError] or [AzureException]
   static Future<VoicesSuccess> getAvailableVoices() async {
-    return repo.getAvailableVoices();
+    return Tts().repo.getAvailableVoices();
   }
 
   ///Get audio for transcription
@@ -66,7 +74,7 @@ class Tts {
   /// [AudioFailedBadGateway], [AudioFailedBadGateway], [AudioFailedUnkownError]
   ///
   static Future<AudioSuccess> getTts(TtsParams ttsParams) async {
-    return repo.getTts(ttsParams);
+    return Tts().repo.getTts(ttsParams);
   }
 
   static void _init(
@@ -97,15 +105,15 @@ class Tts {
 
     final authResponseMapper = AuthResponseMapper();
 
-    _authHandler =
+    Tts()._authHandler =
         AuthHandler(authClient: authClient, mapper: authResponseMapper);
   }
 
   static void _initRepository() {
-    repo = Repository(
-        authHandler: _authHandler,
-        voicesHandler: _voicesHandler,
-        audioHandler: _audioHandler);
+    Tts().repo = Repository(
+        authHandler: Tts()._authHandler,
+        voicesHandler: Tts()._voicesHandler,
+        audioHandler: Tts()._audioHandler);
   }
 
   static void _initLogs(bool withLogs) =>
