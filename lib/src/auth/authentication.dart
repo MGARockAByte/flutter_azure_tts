@@ -10,7 +10,7 @@ class Authentication {
   static Future<AuthResponse> getToken() async {
     final client = http.Client();
     final header = SubscriptionKeyAuthenticationHeader(
-        subscriptionKey: Config.subscriptionKey);
+        subscriptionKey: Config().subscriptionKey);
     final authClient = AuthClient(client: client, authHeader: header);
     final response = await authClient.post(Uri.parse(Endpoints.issueToken));
 

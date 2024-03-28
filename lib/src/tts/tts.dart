@@ -76,7 +76,7 @@ class Tts {
     Map<EndpointType, String>? customEndpoints,
   }) {
     EquatableConfig.stringify = true;
-    Config.init(
+    Config().init(
       endpointRegion: region,
       endpointSubKey: subscriptionKey,
       customEndpointsMap: customEndpoints,
@@ -91,7 +91,7 @@ class Tts {
     final client = http.Client();
 
     final authHeader = SubscriptionKeyAuthenticationHeader(
-        subscriptionKey: Config.subscriptionKey);
+        subscriptionKey: Config().subscriptionKey);
 
     final authClient = AuthClient(client: client, authHeader: authHeader);
 

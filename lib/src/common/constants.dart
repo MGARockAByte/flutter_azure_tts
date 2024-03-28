@@ -24,48 +24,48 @@ class Endpoints {
 
   ///Endpoint used to get Access Token for requests authentication.
   static String get issueToken {
-    if (Config.customEndpoints.containsKey(EndpointType.issueToken) &&
-        Config.customEndpoints[EndpointType.issueToken] != null) {
-      return Config.customEndpoints[EndpointType.issueToken]!;
+    if (Config().customEndpoints.containsKey(EndpointType.issueToken) &&
+        Config().customEndpoints[EndpointType.issueToken] != null) {
+      return Config().customEndpoints[EndpointType.issueToken]!;
     } else
-      return "https://${Config.region}.api.cognitive.microsoft.com/sts/v1.0/issueToken";
+      return "https://${Config().region}.api.cognitive.microsoft.com/sts/v1.0/issueToken";
   }
 
   ///Endpoint used to get the list of voices supported by the endpoint.
   static String get voicesList {
-    if (Config.customEndpoints.containsKey(EndpointType.voicesList) &&
-        Config.customEndpoints[EndpointType.voicesList] != null) {
-      return Config.customEndpoints[EndpointType.voicesList]!;
+    if (Config().customEndpoints.containsKey(EndpointType.voicesList) &&
+        Config().customEndpoints[EndpointType.voicesList] != null) {
+      return Config().customEndpoints[EndpointType.voicesList]!;
     } else {
-      return "https://${Config.region}.tts.speech.microsoft.com/cognitiveservices/voices/list";
+      return "https://${Config().region}.tts.speech.microsoft.com/cognitiveservices/voices/list";
     }
   }
 
   ///Endpoint used to get the list of voices supported by the endpoint.
   static String get customVoicesList {
-    if (Config.customEndpoints.containsKey(EndpointType.customVoicesList) &&
-        Config.customEndpoints[EndpointType.customVoicesList] != null) {
-      return Config.customEndpoints[EndpointType.customVoicesList]!;
+    if (Config().customEndpoints.containsKey(EndpointType.customVoicesList) &&
+        Config().customEndpoints[EndpointType.customVoicesList] != null) {
+      return Config().customEndpoints[EndpointType.customVoicesList]!;
     } else {
-      return "https://${Config.region}.voice.speech.microsoft.com/cognitiveservices/v1?deploymentId=";
+      return "https://${Config().region}.voice.speech.microsoft.com/cognitiveservices/v1?deploymentId=";
     }
   }
 
   static String get longAudio {
-    if (Config.customEndpoints.containsKey(EndpointType.longAudio) &&
-        Config.customEndpoints[EndpointType.longAudio] != null) {
-      return Config.customEndpoints[EndpointType.longAudio]!;
+    if (Config().customEndpoints.containsKey(EndpointType.longAudio) &&
+        Config().customEndpoints[EndpointType.longAudio] != null) {
+      return Config().customEndpoints[EndpointType.longAudio]!;
     } else {
-      return "https://${Config.region}.customvoice.api.speech.microsoft.com";
+      return "https://${Config().region}.customvoice.api.speech.microsoft.com";
     }
   }
 
   static String get audio {
-    if (Config.customEndpoints.containsKey(EndpointType.audio) &&
-        Config.customEndpoints[EndpointType.audio] != null) {
-      return Config.customEndpoints[EndpointType.audio]!;
+    if (Config().customEndpoints.containsKey(EndpointType.audio) &&
+        Config().customEndpoints[EndpointType.audio] != null) {
+      return Config().customEndpoints[EndpointType.audio]!;
     } else {
-      return "https://${Config.region}.tts.speech.microsoft.com/cognitiveservices/v1";
+      return "https://${Config().region}.tts.speech.microsoft.com/cognitiveservices/v1";
     }
   }
 }
