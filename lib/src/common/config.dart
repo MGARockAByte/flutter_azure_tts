@@ -1,5 +1,5 @@
+import 'package:flutter_azure_tts/src/common/endpoint_type.dart';
 import 'package:flutter_azure_tts/src/auth/auth_token.dart';
-import 'package:flutter_azure_tts/src/common/constants.dart';
 
 ///Holds all configurations
 class Config {

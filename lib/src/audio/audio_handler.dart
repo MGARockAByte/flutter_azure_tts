@@ -22,8 +22,13 @@ class AudioHandler {
       final ssml =
           Ssml(voice: params.voice, text: params.text, speed: params.rate ?? 1);
 
-      final response = await audioClient.post(Uri.parse(Endpoints.audio),
-          body: ssml.buildSsml);
+      String endpoint = Endpoints.audio;
+      if (params.voice.deploymentId.isNotEmpty) {
+        endpoint = Endpoints.customVoice + params.voice.deploymentId;
+      }
+
+      final response =
+          await audioClient.post(Uri.parse(endpoint), body: ssml.buildSsml);
       final audioResponse = mapper.map(response);
       if (audioResponse is AudioSuccess) {
         return audioResponse;

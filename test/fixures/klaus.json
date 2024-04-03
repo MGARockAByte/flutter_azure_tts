@@ -1,0 +1,11 @@
+{
+    "Name": "Microsoft Server Speech Text to Speech Voice (de-DE, KlausNeural)",
+    "DisplayName": "Klaus",
+    "LocalName": "Klaus",
+    "ShortName": "de-DE-KlausNeural",
+    "Gender": "Male",
+    "Locale": "de-DE",
+    "SampleRateHertz": "48000",
+    "VoiceType": "Neural",
+    "Status": "GA"
+}

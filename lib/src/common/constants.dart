@@ -1,6 +1,6 @@
 import 'package:flutter_azure_tts/src/common/config.dart';
 
-enum EndpointType { audio, longAudio, issueToken, voicesList, customVoicesList }
+import 'endpoint_type.dart';
 
 class Endpoints {
   Endpoints._();
@@ -15,8 +15,8 @@ class Endpoints {
         return issueToken;
       case EndpointType.voicesList:
         return voicesList;
-      case EndpointType.customVoicesList:
-        return customVoicesList;
+      case EndpointType.customVoice:
+        return customVoice;
       default:
         throw Exception("Invalid endpoint type $type");
     }
@@ -41,11 +41,11 @@ class Endpoints {
     }
   }
 
-  ///Endpoint used to get the list of voices supported by the endpoint.
-  static String get customVoicesList {
-    if (Config().customEndpoints.containsKey(EndpointType.customVoicesList) &&
-        Config().customEndpoints[EndpointType.customVoicesList] != null) {
-      return Config().customEndpoints[EndpointType.customVoicesList]!;
+  ///Endpoint used to get a audio file for custom voices.
+  static String get customVoice {
+    if (Config().customEndpoints.containsKey(EndpointType.customVoice) &&
+        Config().customEndpoints[EndpointType.customVoice] != null) {
+      return Config().customEndpoints[EndpointType.customVoice]!;
     } else {
       return "https://${Config().region}.voice.speech.microsoft.com/cognitiveservices/v1?deploymentId=";
     }
