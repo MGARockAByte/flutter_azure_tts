@@ -9,7 +9,10 @@ import 'package:http/http.dart' as http;
 class VoicesHandler {
   Future<VoicesSuccess> getVoices() async {
     final client = http.Client();
-    final header = BearerAuthenticationHeader(token: Config.authToken!.token);
+    final header = Config().useSTSToken == true
+        ? BearerAuthenticationHeader(token: Config.authToken!.token)
+        : SubscriptionKeyAuthenticationHeader(
+            subscriptionKey: Config().subscriptionKey);
     final voiceClient = VoicesClient(client: client, header: header);
 
     try {

@@ -29,13 +29,14 @@ class AzureTts {
     required String region,
     bool withLogs = true,
     Map<EndpointType, String>? customEndpoints,
+    bool useSTSToken = false,
   }) async {
     Tts.init(
-      region: region,
-      subscriptionKey: subscriptionKey,
-      withLogs: withLogs,
-      customEndpoints: customEndpoints,
-    );
+        region: region,
+        subscriptionKey: subscriptionKey,
+        withLogs: withLogs,
+        customEndpoints: customEndpoints,
+        useSTSToken: useSTSToken);
   }
 
   ///Get available voices on the Azure Endpoint Region

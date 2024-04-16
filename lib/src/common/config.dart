@@ -21,14 +21,19 @@ class Config {
   ///Custom URLs for the endpoints
   late Map<EndpointType, String> customEndpoints;
 
+  ///Use STS token for authentication
+  late bool useSTSToken;
+
   ///Initialise the config by setting endpoint region and subscription key
   void init({
     required String endpointRegion,
     required String endpointSubKey,
     Map<EndpointType, String>? customEndpointsMap,
+    required bool useSTSToken,
   }) {
-    region = endpointRegion;
-    subscriptionKey = endpointSubKey;
-    customEndpoints = customEndpointsMap ?? {};
+    this.region = endpointRegion;
+    this.subscriptionKey = endpointSubKey;
+    this.customEndpoints = customEndpointsMap ?? {};
+    this.useSTSToken = useSTSToken;
   }
 }

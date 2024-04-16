@@ -6,7 +6,7 @@ import 'package:http/http.dart' as http;
 class AudioClient extends BaseClient {
   AudioClient(
       {required http.Client client,
-      required BearerAuthenticationHeader authHeader,
+      required AuthenticationTypeHeader authHeader,
       required AudioTypeHeader audioTypeHeader})
       : _audioTypeHeader = audioTypeHeader,
         super(client: client, header: authHeader);

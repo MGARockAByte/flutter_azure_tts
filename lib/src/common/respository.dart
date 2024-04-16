@@ -59,6 +59,10 @@ class Repository {
   ///
   ///Throws [AzureException] if token request fails.
   Future<bool> assureTokenIsValid() async {
+    if (Config().useSTSToken == false) {
+      return Future.value(true);
+    }
+
     final completer = Completer<bool>();
     if (Config.authToken == null || Config.authToken!.isExpired) {
       final authResponse = await authHandler.getAuthToken();

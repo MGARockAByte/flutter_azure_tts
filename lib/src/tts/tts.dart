@@ -37,17 +37,23 @@ class Tts {
   ///
   /// **withLogs** : (optional) enable logs. *true* by default
   ///
+  /// **customEndpoints : (optional) to configure the endpoints
+  ///
+  /// **useSTSToken** : (optional) use STS token. *true* by default
+  ///
   static void init({
     required String region,
     required String subscriptionKey,
     bool withLogs = true,
     Map<EndpointType, String>? customEndpoints,
+    required bool useSTSToken,
   }) =>
       _init(
         region,
         subscriptionKey,
         withLogs: withLogs,
         customEndpoints: customEndpoints,
+        useSTSToken: useSTSToken,
       );
 
   ///Get available voices on the Azure Endpoint Region
@@ -84,12 +90,14 @@ class Tts {
     String subscriptionKey, {
     bool withLogs = true,
     Map<EndpointType, String>? customEndpoints,
+    required bool useSTSToken,
   }) {
     EquatableConfig.stringify = true;
     Config().init(
       endpointRegion: region,
       endpointSubKey: subscriptionKey,
       customEndpointsMap: customEndpoints,
+      useSTSToken: useSTSToken,
     );
     _initAuthManager();
     _initRepository();

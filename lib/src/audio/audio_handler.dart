@@ -13,10 +13,15 @@ import 'audio_type_header.dart';
 class AudioHandler {
   Future<AudioSuccess> getAudio(AudioRequestParams params) async {
     final mapper = AudioResponseMapper();
+    final header = Config().useSTSToken == true
+        ? BearerAuthenticationHeader(token: Config.authToken!.token)
+        : SubscriptionKeyAuthenticationHeader(
+            subscriptionKey: Config().subscriptionKey);
     final audioClient = AudioClient(
-        client: http.Client(),
-        authHeader: BearerAuthenticationHeader(token: Config.authToken!.token),
-        audioTypeHeader: AudioTypeHeader(audioFormat: params.audioFormat));
+      client: http.Client(),
+      authHeader: header,
+      audioTypeHeader: AudioTypeHeader(audioFormat: params.audioFormat),
+    );
 
     try {
       final ssml =
