@@ -3,7 +3,7 @@ import 'dart:convert';
 import 'package:flutter_azure_tts/src/voices/voice_model.dart';
 import 'package:test/test.dart';
 
-import '../../fixures/fixure_reader.dart';
+import '../../fixtures/fixture_reader.dart';
 
 void main() {
   group('Voice', () {

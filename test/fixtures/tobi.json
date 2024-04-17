@@ -1,12 +1,12 @@
 {
     "Name": "Microsoft Server Speech Text to Speech Voice (de-DE, TobiNeural)",
     "DisplayName": "Tobi",
-    "LocalName": "Tobi",
-    "ShortName": "de-DE-KlausNeural",
+    "LocalName": "Tob",
+    "ShortName": "de-DE-TobiNeural",
     "Gender": "Male",
     "Locale": "de-DE",
     "SampleRateHertz": "48000",
     "VoiceType": "Neural",
     "Status": "GA",
-    "DeploymentId": "abab-abab-abab-abab-abababababab"
+    "DeploymentId": "asdf-asdf-asdfasdf-afasdfasdfaf"
 }
